@@ -1,0 +1,57 @@
+<html>
+  <style>
+    body{ 
+      font-size: 15pt;
+      font-family: arial;
+    }
+  </style>
+
+
+<body>
+  <h1>Coursework Management System</h1>
+
+  <h2>Coursework Information</h2>
+
+  <table style="width:100%">
+  {% for n in cw_info %}
+  <tr>
+    <td> {{ n[0] }} </td>
+    <td> {{ n[1] }} </td>
+  </tr>
+  {% endfor %}
+  </table>
+
+  {% if group %}
+    <p>Group information</p>
+    <p> There are {{ mem_cnt }} members:</p>
+    {% for tm in teamlist  %}
+      <p>SID: {{ tm }}</p>
+    {%  endfor %}
+
+    {% if mem_cnt < cw_info[-1][1] %}
+      {% if approved %}
+        <p> Your group information is fixed. </p>
+        {% else %}
+        <p> You can add more members!</p>
+        <p> You can edit your group information <a href="{{ url_for('team_edit', cwid=cwid, tid=tid) }}"> HERE </a>. </p>
+      {% endif %}
+    {% else %}
+      <p> You group is full! </p>
+    {% endif %}
+
+
+  {% else %}
+    <p>You have not formed a group</p>
+    <p>You can form a group here:</p>
+
+    <a href="{{ url_for('initiate_team', cwid=cwid) }}"> Initiate a team </a> <br/>
+
+  {% endif %}
+
+
+
+
+</body>
+
+
+</html>

@@ -1,0 +1,59 @@
+<html>
+  <style>
+    body{ 
+      font-size: 15pt;
+      font-family: arial;
+    }
+  </style>
+
+
+<body>
+  <h1>Coursework Management System</h1>
+
+  <h2>Schedule</h2>
+
+
+  <table style="width:100%">
+  <tr>
+    <td>Course ID</td>
+    <td>Course Name</td> 
+    <td>Time</td>
+    <td>Building</td>
+    <td>Classroom</td>
+  </tr>
+    {% for n in std_course %}
+    <tr>
+      {% for ele in n %}
+        <!--<td> {{ ele }} </td> -->
+        {% if loop.first %}
+          <td> <a href="{{ url_for('course_info', ccid=ele) }}">{{ ele }}</a> </td>
+        {% else %}
+          <td> {{ ele }} </td>
+        {% endif %}
+      {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+
+
+
+ <a href="{{ url_for('register_course') }}"> Registration <a/>
+
+
+
+
+<!--
+  
+  <div>{{std_course}}</div>
+
+  <div>
+    {% for n in std_course %}
+    <div>{{n}}</div>
+    {% endfor %}
+  </div>
+-->
+
+</body>
+
+
+</html>

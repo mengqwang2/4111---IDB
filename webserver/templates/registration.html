@@ -1,0 +1,50 @@
+<html>
+  <style>
+    body{ 
+      font-size: 15pt;
+      font-family: arial;
+    }
+  </style>
+
+
+<body>
+  <h1>Coursework Management System</h1>
+
+  <h2>Register here!</h2>
+  <form method="POST" action="/register_submit">
+
+  {% if role==1 %}
+    Name: <input type="text" name="name" value="" /> <br/>
+    Department ID:
+    <select name="did">
+    {% for d in didlist %}
+        <option value="{{ d[0] }}">{{ d[0] }}</option>
+    {% endfor %}
+    </select><br/>
+
+    Cohort: <input type="text" name="cohort" value="" /><br/>
+    Gender: <input type="text" name="gender" value="" /><br/>
+    <input type="hidden" name="id" value="{{ maxid }}" />
+    <input type="hidden" name="role" value="{{ role }}" />
+  {% else %}
+    Name: <input type="text" name="name" value="" /> <br/>
+    Department ID:
+    <select name="did">
+    {% for d in didlist %}
+        <option value="{{ d[0] }}">{{ d[0] }}</option>
+    {% endfor %}
+    </select><br/>
+
+    Title: <input type="text" name="title" value="" /><br/>
+    <input type="hidden" name="id" value="{{ maxid }}" />
+    <input type="hidden" name="role" value="{{ role }}" />
+
+  {%  endif %}
+  
+  <input type="submit" value="Register" />
+
+
+  </form>
+</body>
+
+</html>

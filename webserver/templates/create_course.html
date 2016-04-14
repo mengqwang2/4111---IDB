@@ -1,0 +1,42 @@
+<html>
+  <style>
+    body{ 
+      font-size: 15pt;
+      font-family: arial;
+    }
+  </style>
+
+
+<body>
+  <h1>Coursework Management System</h1>
+
+  <h2>Create a course here!</h2>
+  
+  <form method="POST" action="/course_create_submit">
+   Course Name: <input type="text" name="cname" value="" /> <br/>
+   Department ID: 
+   <select name="department">
+    {% for d in deptlist %}
+        <option value="{{ d[0] }}">{{ d[1] }}</option>
+    {% endfor %}
+  </select><br/>
+  Term: <input type="text" name="term" value="" /><br/>
+  Time: <input type="text" name="time" value="" /><br/>
+  Capacity: <input type="text" name="capacity" value="" /><br/>
+  Credit: <input type="text" name="credit" value="" /><br/>
+  Location: 
+  <select name="location">
+    {% for l in locationlist %}
+        <option value="{{ l[0] }}">{{ l[1] }}</option>
+    {% endfor %}
+  </select><br/>
+
+  <input type="hidden" name="cid" value="{{ max_cid }}" />
+  
+  <input type="submit" value="Create" />
+
+
+  </form>
+</body>
+
+</html>

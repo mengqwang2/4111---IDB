@@ -1,0 +1,38 @@
+<html>
+  <style>
+    body{ 
+      font-size: 15pt;
+      font-family: arial;
+    }
+  </style>
+
+
+<body>
+  <h1>Coursework Management System</h1>
+
+  <h2>Edit your group information here</h2>
+  <p>Group information</p>
+    {% for tm in teamlist  %}
+      <p>SID: {{ tm }}</p>
+    {%  endfor %}
+
+
+  <p> Add more members here: </p>
+  <form method="POST" action="/team_submit">
+
+  <select name="member">
+    {% for cand in candidate %}
+        <option value="{{ cand }}">{{ cand }}</option>
+    {% endfor %}
+  </select>
+
+  <input type="hidden" name="cnt" value="{{ mem_cnt }}" />
+  <input type="hidden" name="cwid" value="{{ cwid }}" />
+
+  <input type="submit" value="Add" />
+
+
+  </form>
+</body>
+
+</html>
